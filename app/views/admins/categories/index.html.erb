@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <h4>分類</h4>
+    <div class="category-make">
+      <%= form_with model: @category, url: admins_categories_path, local: true do |f| %>
+        カテゴリ：<%= f.text_field :name %>　
+        分　類：<%= f.collection_select :genre_id, @genres, :id, :name %>　
+        Master：<%= f.check_box :master, checked: true %>　
+        <%= f.submit "作成", class: "btn btn-success" %>
+      <% end %>
+    </div>
+    <div class="category-list">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>カテゴリ名</th>
+            <th>分類名</th>
+            <th>Master</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.name %></td>
+              <td><%= category.genre.name %></td>
+              <td><%= category.master %></td>
+              <td><%= link_to "訂正", edit_admins_category_path(category), class: "btn btn-warning btn-sm" %></td>
+              <td><%= link_to "削除", admins_category_path(category), method: :delete, class: "btn btn-danger btn-sm" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@
   <div class="row">
     <h4>分類</h4>
     <div class="genre-make">
-      <%= form_with model: @genre, url: users_genres_path, local: true do |f| %>
+      <%= form_with model: @genre, url: admins_genres_path, local: true do |f| %>
         分類：<%= f.text_field :name %>
         <%= f.submit "作成", class: "btn btn-success" %>
       <% end %>
@@ -12,6 +12,8 @@
         <thead>
           <tr>
             <th>分類名</th>
+            <th>件数</th>
+            <th>TotalTime</th>
             <th></th>
             <th></th>
           </tr>
@@ -20,8 +22,10 @@
           <% @genres.each do |genre| %>
             <tr>
               <td><%= genre.name %></td>
-              <td><%= link_to "訂正", edit_users_genre_path(genre), class: "btn btn-warning btn-sm" %></td>
-              <td><%= link_to "削除", users_genre_path(genre), method: :delete, class: "btn btn-danger btn-sm" %></td>
+              <td><%= link_to genre.categories.count, admins_categories_path(:genre_id => genre.id) %></td>
+              <td><%= %></td>
+              <td><%= link_to "訂正", edit_admins_genre_path(genre), class: "btn btn-warning btn-sm" %></td>
+              <td><%= link_to "削除", admins_genre_path(genre), method: :delete, class: "btn btn-danger btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>
