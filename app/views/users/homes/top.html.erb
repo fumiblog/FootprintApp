@@ -4,28 +4,43 @@
     <div class="col-sm-6 text-center border m-2 p-2">
       <h4>Footprint → 足　跡</h4>
       <%= image_tag 'footprint.png', class: "rounded-circle", size: "100x100" %>
-      <div class="genre-choice card-group m-1">
-        <% @genres.each do |genre| %>
-          <div class="card border-light" style="15rem;">
-            <div class="card-img-top">
-              <%=  %>
-            </div>
-            <div class="card-body">
-              <div class="card-title">
-                <div class="doropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    <%= genre.name %>
-                  </button>
-                  <% @categories.each do |category| %>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li><a href="#" class="dropdown-item"><%= category.name %></a></li>
-                    </ul>
-                  <% end %>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="doropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              ジャンル
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% @genres.each do |genre| %>
+                <li>
+                  <a href="#" class="dropdown-item">
+                    <%= link_to genre.name, root_path(:genre_id => genre.id) %>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <h6 class="m-1 border bg-info">
+            <% if @genre == nil %>
+              全て表示
+            <% else %>
+              <%= @genre.name %>
+            <% end %>
+          </h6>
+        </div>
+        <div class="col-sm-9">
+          <div class="row">
+            <% @categories.each do |category| %>
+              <div class="col-sm-5 m-1">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= category.name %></h5>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
     <div class="col-sm-3"></div>
