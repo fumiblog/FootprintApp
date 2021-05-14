@@ -3,7 +3,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6 text-center border m-2 p-2">
       <h4>Footprint → 足　跡</h4>
-      <%= image_tag 'footprint.png', class: "rounded-circle", size: "100x100" %>
+      <%= image_tag 'footprint.png', class: "footprint-img rounded-circle border", size: "100x100" %>
       <div class="row">
         <div class="col-sm-3">
           <div class="doropdown">
@@ -32,11 +32,13 @@
           <div class="row">
             <% @categories.each do |category| %>
               <div class="col-sm-5 m-1">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title"><%= category.name %></h5>
+                <%= link_to new_users_footprint_path do %>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= category.name %></h5>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               </div>
             <% end %>
           </div>

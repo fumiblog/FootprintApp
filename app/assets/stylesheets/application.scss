@@ -16,3 +16,11 @@
 
  @import "bootstrap";
  
+ .footprint-img2 {
+   display: inline-block;
+   animation: rotate-anime 2s ease-in-out infinite;
+ }
+
+ @keyframes rotate-anime {
+   100%{transform: rotate(360deg)}
+ }

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 text-center border m-2 p-2">
+      <h4>Footprint → 足　跡</h4>
+      <%= image_tag 'footprint.png', class: "footprint-img2 rounded-circle border", size: "100x100" %>
+      <div class="footprint-make text-center">
+        <%= form_with model:@footprint, url: users_footprints_path, local: true do |f| %>
+          スタート：<%= f.time_field :start_time, default: Time.now %>　
+          タイトル：<%= f.text_field :title %>
+          メ　　モ：<%= f.text_field :memo %>
+          <%= f.submit "完了", id: "finish", class: "btn btn-warning"%>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
