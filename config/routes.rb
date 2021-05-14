@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :homes, only: [:index] do
       get :top
     end
+    resources :footprints
   end
 
 

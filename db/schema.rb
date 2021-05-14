@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_011925) do
+ActiveRecord::Schema.define(version: 2021_05_14_014449) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.integer "genre_id"
     t.boolean "master"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "footprints", force: :cascade do |t|
+    t.string "title"
+    t.integer "category_id"
+    t.string "note"
+    t.time "start_time"
+    t.time "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
